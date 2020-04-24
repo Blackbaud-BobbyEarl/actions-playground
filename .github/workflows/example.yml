@@ -7,17 +7,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && !contains(github.event.head_commit.message, '[ci skip]')
     
     steps:
     - uses: actions/checkout@v2
         
     - name: Publish
       run: |
-        mv dist docs
-        cp docs/index.html docs/404.html
+        cp dist/index.html dist/404.html
         git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
         git config --global user.name "$GITHUB_ACTOR"
+        git subtree split --branch gh-pages --prefix dist/
         git add .
-        git commit -am "Build for ${GITHUB_SHA} [ci skip]"
-        git push origin master
+        git commit -am "Build for ${GITHUB_SHA}"
+        git push origin gh-pages
