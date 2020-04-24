@@ -8,9 +8,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    env:
-      TARGET_REPO: actions-playground
-
     steps:
     - uses: actions/checkout@v2
 
@@ -18,7 +15,7 @@ jobs:
       run: |
         cd hello-world
         npm i
-        npx -p @angular/cli ng build --prod --output-path dist --base-href /$TARGET_REPO/
+        npx -p @angular/cli ng build --prod --output-path dist --base-href /actions-playground/
         cp dist/index.html dist/404.html
         cd ../
 
@@ -26,12 +23,12 @@ jobs:
       uses: crazy-max/ghaction-github-pages@v1.4.0
       if: success()
       with:
-        repo: blackbaud-bobbyearl/$TARGET_REPO
+        repo: blackbaud-bobbyearl/actions-playground
         target_branch: master
         keep_history: true
         build_dir: hello-world/dist
-        committer_name: $GITHUB_ACTOR
-        committer_email: $GITHUB_ACTOR@users.noreply.github.com
+        committer_name: "$GITHUB_ACTOR"
+        committer_email: "$GITHUB_ACTOR@users.noreply.github.com"
         commit_message: "Build for ${GITHUB_SHA}"
       env:
         GITHUB_PAT: ${{ secrets.DEPLOY_TO_PROD }}
