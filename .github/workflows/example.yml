@@ -25,5 +25,5 @@ jobs:
         git config --global user.name "$GITHUB_ACTOR"
         git add .
         git commit -am "Build for ${GITHUB_SHA}"
-        git subtree push --prefix hello-world/dist/hello-world origin gh-pages
-        git push origin gh-pages -f
+        git subtree split --prefix hello-world/dist/hello-world -b gh-pages
+        git push -f origin gh-pages:gh-pages
