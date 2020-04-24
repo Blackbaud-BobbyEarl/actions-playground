@@ -13,11 +13,11 @@ jobs:
         
     - name: Publish
       run: |
-        cd dist/
-        cp index.html 404.html
+        cp dist/index.html dist/404.html
         git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
         git config --global user.name "$GITHUB_ACTOR"
-        git switch -c gh-pages
         git add .
         git commit -am "Build for ${GITHUB_SHA}"
+        git switch -c gh-pages
+        git filter-branch --prune-empty --subdirectory-filter dist gh-pages
         git push origin gh-pages -f
