@@ -14,7 +14,7 @@ jobs:
     - name: Build
       run: |
         cd hello-world
-        npx ng build --prod
+        npx -p @angular/cli ng build --prod
         cp dist/hello-world/index.html dist/hello-world/404.html
         cd ../
         
