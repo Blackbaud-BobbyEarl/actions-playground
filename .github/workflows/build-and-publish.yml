@@ -22,8 +22,9 @@ jobs:
         cp dist/index.html dist/404.html
         cd ../
 
-    - name: GitHub Pages
+    - name: Publish
       uses: crazy-max/ghaction-github-pages@v1.4.0
+      if: success()
       with:
         repo: blackbaud-bobbyearl/$TARGET_REPO
         target_branch: master
@@ -32,3 +33,5 @@ jobs:
         committer_name: $GITHUB_ACTOR
         committer_email: $GITHUB_ACTOR@users.noreply.github.com
         commit_message: "Build for ${GITHUB_SHA}"
+      env:
+        GITHUB_PAT: ${{ secrets.DEPLOY_TO_PROD }}
