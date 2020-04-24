@@ -27,8 +27,8 @@ jobs:
         target_branch: master
         keep_history: true
         build_dir: hello-world/dist
-        committer_name: "$GITHUB_ACTOR"
-        committer_email: "$GITHUB_ACTOR@users.noreply.github.com"
-        commit_message: "Build for ${GITHUB_SHA}"
+        committer_name: "${{ github.actor }}"
+        committer_email: "${{ github.actor }}@users.noreply.github.com"
+        commit_message: "Build for ${{ github.sha }}"
       env:
-        GITHUB_PAT: ${{ secrets.DEPLOY_TO_PROD }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
