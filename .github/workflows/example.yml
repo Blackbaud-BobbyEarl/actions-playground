@@ -19,4 +19,4 @@ jobs:
         git subtree split --branch gh-pages --prefix dist/
         git add .
         git commit -am "Build for ${GITHUB_SHA}"
-        git push origin gh-pages
+        git push origin gh-pages -f
