@@ -1,0 +1,8 @@
+{
+  "$schema": "./node_modules/@skyux/config/skyuxconfig-schema.json",
+  "compileMode": "aot",
+  "mode": "easy",
+  "app": {
+    "base": "/actions-playground/"
+  }
+}
