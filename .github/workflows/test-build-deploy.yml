@@ -11,10 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - run: npm i
+
       - run: npx -p @skyux-sdk/cli skyux test --headless
+
       - run: npx -p @skyux-sdk/cli skyux build
+
       - run: cp dist/index.html dist/404.html
+        if: ${{ success() && github.event_name == 'push' }}
+
       - uses: crazy-max/ghaction-github-pages@v1
         if: ${{ success() && github.event_name == 'push' }}
         with:
