@@ -27,5 +27,3 @@ jobs:
         keep_history: true
         build_dir: dist
         commit_message: "Build for ${{ github.sha }}"
-      env:
-        GITHUB_TOKEN: ${{ secrets.DEPLOY_TO_PROD }}
