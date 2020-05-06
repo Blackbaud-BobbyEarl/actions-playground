@@ -17,7 +17,7 @@ jobs:
       run: npm i
 
     - name: Test
-      run: npx skyux test
+      run: npx -p @skyux-sdk/cli skyux test
 
     - name: Build
-      run: npx skyux build
+      run: npx -p @skyux-sdk/cli skyux build

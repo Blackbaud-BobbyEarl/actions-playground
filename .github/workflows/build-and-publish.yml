@@ -11,11 +11,14 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Install
+      run: npm i
+
     - name: Build
-      run: |
-        npm i
-        npx skyux build
-        cp dist/index.html dist/404.html
+      run: npx -p @skyux-sdk/cli skyux build
+
+    - name: Single Page Application Hack
+      run: cp dist/index.html dist/404.html
 
     - name: Publish
       uses: crazy-max/ghaction-github-pages@v1
