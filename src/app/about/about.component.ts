@@ -17,7 +17,7 @@ export class AboutComponent {
       email: 'sam@jones.com'
     },
     {
-      name: 'Michael Jordan',
+      name: 'Michael Jordan, Jr.',
       email: 'michael@jordon.net'
     }
   ];
